@@ -6,23 +6,25 @@
         Colors
     </title>
     <script>
-        document.addEventListener('DOMContentLoaded', function (){
-                document.querySelectorAll('button').forEach(function(button) {
-                    button.onclick = function() {
-                        document.querySelector('#hello').style.color = button.dataset.color;
-                    }
-                });
-            });
+        document.addEventListener('DOMContentLoaded', function () {
+
+            document.querySelector('select').onchange = function () {
+                document.querySelector('#hello').style.color = this.value;
+
+            }
+        });
     </script>
 
 </head>
 
 <body>
     <h1 id="hello">Hello!</h1>
-    <button data-color='Red'>red</button>
-    <button data-color='Blue'>Blue</button>
-    <button data-color='green'>Green</button>
-
+    <select>
+        <option value="Black">Black</option>
+        <option value="Red">Red</option>
+        <option value="Blue">Blue</option>
+        <option value="Green">Green</option>
+    </select>
 </body>
 
 </html>
