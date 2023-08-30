@@ -10,7 +10,14 @@
             document.querySelector('#submit').disabled = true;
             //activate submit button after typing to the field allowing the user to access the submit button
             document.querySelector('#task').onkeyup = () => {
-                document.querySelector('#submit').disabled = false;
+                // interactive submit button based on how user responds with the page
+                // when user types submit button is enabled
+                // when field is cleared submit button is disabled
+                if (document.querySelector('#task').value.length > 0) {
+                    document.querySelector('#submit').disabled = false;
+                } else {
+                    document.querySelector('#submit').disabled = true;
+                }
             }
             document.querySelector('form').addEventListener('submit', function (event) {
                 event.preventDefault(); // Prevent form submission
@@ -18,7 +25,7 @@
                 const taskInput = document.querySelector('#task');
                 const taskValue = taskInput.value;
                 // check if the user has entered anyting meaningful rather that white spaces
-                //check if the user has entered text for new task
+                // check if the user has entered text for new task
                 // const li = document.createElement('li') creates an element that which represents an item in the field
                 if (taskValue.trim() !== '') {
                     const li = document.createElement('li');
