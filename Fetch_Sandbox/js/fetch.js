@@ -4,6 +4,9 @@ document.getElementById('getText').addEventListener
 document.getElementById('getUsers').addEventListener
 ('click', getUsers);
 
+document.getElementById('getPosts').addEventListener
+('click', getPosts);
+
 function getText(){
     // fetch('sample.txt')
     // .then(function(res){
@@ -42,3 +45,22 @@ function getUsers(){
         document.getElementById('output').innerHTML = output;
     })
 }
+
+function getPosts(){
+    fetch('https://jsonplaceholder.typicode.com/posts')
+    .then(res => res.json()) // convert the json file to a javascript object
+    .then(data => {
+        let output = '<h2>Posts</h2>';
+        // loop through the data
+        data.forEach(function(post){
+            // display the data in the console
+            output += `
+            <div>
+                <h3>${post.title}</h3>
+                <p>${post.body}</p>
+            `;
+        });
+        document.getElementById('output').innerHTML = output;
+    })
+}
+    
