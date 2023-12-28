@@ -7,6 +7,9 @@ document.getElementById('getUsers').addEventListener
 document.getElementById('getPosts').addEventListener
 ('click', getPosts);
 
+document.getElementById('addPosts').addEventListener
+('submit', addPosts);
+
 function getText(){
     // fetch('sample.txt')
     // .then(function(res){
@@ -64,3 +67,23 @@ function getPosts(){
     })
 }
     
+function addPosts(e){
+    e.preventDefault();
+
+    let title = document.getElementById('title').value;
+    let body = document.getElementById('body').value;
+
+    fetch('https://jsonplaceholder.typicode.com/posts',
+    {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json, text/plain, */*',
+            'Content-type':'application/json'
+        },
+        // convert the data to a string 
+        body: JSON.stringify({title:title, body:body})
+    })
+    .then(res => res.json())
+    .then(data => console.log(data))
+}
+
