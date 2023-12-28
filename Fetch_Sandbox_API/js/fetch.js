@@ -19,11 +19,11 @@ function getText(){
     //     console.log(data);
     // })
     // using arrow function
-    fetch('sample.txt')
+    fetch('http://localhost:8000/api/')
     .then(res => res.text())
     .then(data => {
         // display the data in the console
-        console.log(data);
+        // console.log(data);
         // display the data in the browser
         document.getElementById('output').innerHTML = data;
     })
