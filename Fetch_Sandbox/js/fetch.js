@@ -1,6 +1,9 @@
 document.getElementById('getText').addEventListener
 ('click', getText);
 
+document.getElementById('getUsers').addEventListener
+('click', getUsers);
+
 function getText(){
     // fetch('sample.txt')
     // .then(function(res){
@@ -19,4 +22,23 @@ function getText(){
         document.getElementById('output').innerHTML = data;
     })
     .catch(err => console.log(err)); // catch any error
+}
+function getUsers(){
+    fetch('data/users.json') // fetch the json file
+    .then(res => res.json()) // convert the json file to a javascript object
+    .then(data => {
+        let output = '<h2>Users</h2>';
+        // loop through the data
+        data.forEach(function(user){
+            // display the data in the console
+            output += `
+            <ul>
+                <li>ID: ${user.id}</li>
+                <li>Name: ${user.name}</li>
+                <li>Email: ${user.email}</li>
+            </ul>
+            `;
+        });
+        document.getElementById('output').innerHTML = output;
+    })
 }
